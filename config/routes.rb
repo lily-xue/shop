@@ -4,6 +4,7 @@ Shop::Application.routes.draw do
 root 'home#index'  
 get "home/about"
   get "home/contact"
+get "user/getcode"
 
   resources :products do
   

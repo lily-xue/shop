@@ -16,20 +16,24 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :sex %><br>
-    <%= f.text_field :sex %>
-  </div>
-  <div class="field">
     <%= f.label :department %><br>
     <%= f.text_field :department %>
   </div>
   <div class="field">
-    <%= f.label :telephone %><br>
-    <%= f.text_field :telephone %>
+    <%= f.label :password %><br>
+    <%= f.text_field :password %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
+  </div>
+<div>
+<%= link_to "获得验证码",{:controller => "user", :action => "getcode"}, {:onclick => "alert(1)"} %>
+</div>
+
+  <div class="field">
+    <%= f.label :ActiveCode %><br>
+    <%= f.text_field :ActiveCode %>
   </div>
   <div class="actions">
     <%= f.submit %>
