@@ -1,10 +1,10 @@
 Shop::Application.routes.draw do
+get ":controller/:action/:name/:ActiveCode/:id"
   resources :users
 
 root 'home#index'  
 get "home/about"
   get "home/contact"
-get "user/getcode"
 
   resources :products do
   

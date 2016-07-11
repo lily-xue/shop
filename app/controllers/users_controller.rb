@@ -2,6 +2,19 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
+  def pro_activate
+ user = User.find_by_name(params[:name])
+ if user != nil && user.IsActived == false && user.ActiveCode ==params[ActiveCode]
+  then
+user.update_attribute(:IsActived,true)
+flash[:notice] = "激活成功"
+else 
+ flash[:notice] = "激活失败"
+end
+
+end
+
+
   def index
     @users = User.all
   end
