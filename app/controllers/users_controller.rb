@@ -2,15 +2,6 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /users
   # GET /users.json
-  def getcode
-    @user.ActiveCode = rand(Time.now.to_i).to_s
-    SignupMailer.sendmail(@user).deliver
-    respond_to do |format|
-  format.html { render action: 'new' }
-  format.json { render json: @user.errors, status: :unprocessable_entity }
-
-    end
-  end
   def index
     @users = User.all
   end
@@ -33,9 +24,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @user.IsActived = false
+    @user.ActiveCode = rand(Time.now.to_i).to_s
+   @user.IsActived = false
     respond_to do |format|
       if @user.save
+    SignupMailer.sendmail(@user).deliver
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render action: 'show', status: :created, location: @user }
       else
@@ -77,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :ActiveCode, :department, :password, :email)
+      params.require(:user).permit(:name, :ActiveCode,:IsActived, :department, :password, :email)
     end
 end
