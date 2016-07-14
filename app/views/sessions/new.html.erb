@@ -1,0 +1,14 @@
+<% provide(:title,"Sign in")%>
+<h1>用户登录</h1>
+
+<%= form_for(:session, url: sessions_path) do |f|%>
+<%= f.label :姓名 %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :密码 %>
+<%= f.text_field :password %>
+<br>
+<%= f.submit "登录" %>
+<% end %>
+<br>
+<p>新用户？<%= link_to "注册",signup_path%></p>

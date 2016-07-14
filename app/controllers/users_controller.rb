@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
     SignupMailer.sendmail(@user).deliver
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: '账号注册成功，请登录邮件激活账号' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

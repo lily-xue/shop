@@ -1,14 +1,16 @@
 Shop::Application.routes.draw do
 get ":controller/:action/:name/:ActiveCode/:id"
-  resources :users
+resources :sessions,only:[:new ,:create,:destroy]
+resources :users
 
 root 'home#index'  
 get "home/about"
-  get "home/contact"
-
-  resources :products do
-  
-  resources :variants
+get "home/contact"
+match '/signup', to: 'users#new',via: 'get'
+match '/signin', to: 'sessions#new',via: 'get'
+match '/signout', to: 'sessions#destroy',via: 'delete'
+resources :products do
+resources :variants
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
