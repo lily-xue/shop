@@ -4,10 +4,13 @@ class UsersController < ApplicationController
   # GET /users.json
   def pro_activate
  user = User.find_by_name(params[:name])
- if user != nil && user.IsActived == false && user.ActiveCode ==params[ActiveCode]
-  then
-user.update_attribute(:IsActived,true)
+ #if (user != nil && user.IsActived == false && user.ActiveCode ==params[:ActiveCode] )then
+ if  user.IsActived == false then
+
+user.update_attribute(IsActived: true)
 flash[:notice] = "激活成功"
+elsif user != nil and user.IsActived == true then
+ flash[:notice] = "已经激活了~"
 else 
  flash[:notice] = "激活失败"
 end
