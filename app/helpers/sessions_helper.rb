@@ -19,4 +19,8 @@ remember_token = User.encrypt(cookies[:remember_token])#取出cookies中的remem
 @current_user ||= User.find_by(remember_token: remember_token)#根据加密后的remember_token值从数据库中查找用户
 end
 
+def current_user?(user)
+user == current_user
+end
+
 end
