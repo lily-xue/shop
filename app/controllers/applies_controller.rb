@@ -1,4 +1,3 @@
-
 class AppliesController < ApplicationController
 def new
 @apply = Apply.new
