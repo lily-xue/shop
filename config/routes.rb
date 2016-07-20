@@ -2,6 +2,7 @@ Shop::Application.routes.draw do
 get ":controller/:action/:name/:ActiveCode/:id"
 resources :sessions,only:[:new ,:create,:destroy]
 resources :users 
+resources :applies
 root 'home#index'  
 get "home/about"
 get "home/contact"

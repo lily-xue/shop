@@ -1,0 +1,9 @@
+<h1>所有申请</h1>
+    <% @applies.each do |apply| %>
+      <tr>
+        <td><%= apply.status %></td>
+        <td><%= apply.overtime %></td>
+        <td><%= apply.created_at %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>

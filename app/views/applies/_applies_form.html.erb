@@ -1,0 +1,31 @@
+
+<%= form_for(@apply) do |f| %>
+  <% if @apply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@apply.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @apply.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :加班时间 %><br>
+    <%= f.date_select :overtime,:use_month_numbers => true %>
+  </div>
+  <div class="field">
+    <%= f.label :申请时间 %><br>
+    <%= Time.now.strftime("%Y-%m-%d")%>
+  </div>
+  <div class="field">
+    <%= f.label :申请人 %><br>
+    <%= @current_user.name%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

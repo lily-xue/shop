@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  overtime: 2016-07-20 03:42:46
+  tips: MyString
+
+two:
+  status: MyString
+  overtime: 2016-07-20 03:42:46
+  tips: MyString
