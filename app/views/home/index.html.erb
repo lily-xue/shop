@@ -6,7 +6,8 @@
 <%= link_to "2.新建用户",new_user_path %>
 <% elsif %>
 <%= link_to "修改个人信息",edit_user_path(current_user)%></p>
-<%= link_to "1.新建申请",new_apply_path %>
+<%= link_to "1.新建申请",new_apply_path %><br/>
+<%= link_to "2.查看申请记录",applies_path %>
 <% end %>
 <% elsif %>
 <h1>欢迎来到海那边xx领取系统</h1>

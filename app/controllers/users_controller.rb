@@ -93,9 +93,6 @@ flash[:notice] = "账号删除成功"
       params.require(:user).permit(:name, :ActiveCode,:IsActived, :department, :password,:password_confirmation, :email)
     end
 
-    def signed_in_user
-redirect_to signin_url,notice:"please sign in ." unless sign_in?
-    end
     
     def correct_user
    @user = User.find(params[:id])

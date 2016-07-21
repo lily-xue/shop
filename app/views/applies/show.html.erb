@@ -4,6 +4,7 @@
 <p>
 
   <strong>Name:</strong>
+  <p><%= @apply.user.name%></p>
 </p>
 
 
@@ -16,8 +17,11 @@
 
 <p>
   <strong>加班时间:</strong>
+   
+   <p><%= @apply.overtime.strftime("%Y-%m-%d")%></p>
 </p>
 
 <p>
   <strong>申请时间:</strong>
+   <p><%= @apply.created_at.strftime("%Y-%m-%d")%></p>
 </p>

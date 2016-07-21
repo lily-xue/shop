@@ -1,9 +1,22 @@
 <h1>所有申请</h1>
-    <% @applies.each do |apply| %>
+<table>
+  <thead>
+    <tr>
+      <th>状态</th>
+      <th>加班时间</th>
+      <th>申请时间</th>
+      <th>申请人</th>
+      <th></th>
+      <th></th>
+    </tr>
+  <tbody>
+    <% @current_user.applies.each do |apply| %>
       <tr>
         <td><%= apply.status %></td>
-        <td><%= apply.overtime %></td>
-        <td><%= apply.created_at %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= apply.overtime.strftime("%Y-%m-%d") %></td>
+        <td><%= apply.created_at.strftime("%Y-%m-%d") %></td>
+        <td><%= apply.user.name %></td>
       </tr>
     <% end %>
+  </tbody>
+</table>
