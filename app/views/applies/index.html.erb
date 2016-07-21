@@ -6,7 +6,7 @@
       <th>加班时间</th>
       <th>申请时间</th>
       <th>申请人</th>
-      <th></th>
+      <th>管理员备注</th>
       <th></th>
     </tr>
   <tbody>
@@ -16,6 +16,7 @@
         <td><%= apply.overtime.strftime("%Y-%m-%d") %></td>
         <td><%= apply.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= apply.user.name %></td>
+        <td><%= apply.tips %></td>
       </tr>
     <% end %>
   </tbody>
