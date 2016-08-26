@@ -1,20 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in_user,only: [:edite,:update,:destroy,:index] 
-  before_action :correct_user,only: [:edite,:update] 
-  before_action :admin_user,only: [:destroy] 
+  before_action :signed_in_user,only: [:edite,:update,:destroy,:index]
+  before_action :correct_user,only: [:edite,:update]
+  before_action :admin_user,only: [:destroy]
  # GET /users
   # GET /users.json
   def pro_activate
-	user = User.find_by_name(params[:name])
-	if (user != nil && user.IsActived == "f" && user.ActiveCode ==params[:ActiveCode] )then
-		user.update_attribute(:IsActived, true)
-		flash[:notice] = "激活成功"
-	elsif user != nil and user.IsActived == "t" then
-		flash[:notice] = "你已经激活过了~"
-	else 
-		flash[:notice] = "激活失败"
-	end
+    set_activate
   end
 
 
@@ -93,13 +85,16 @@ flash[:notice] = "账号删除成功"
       params.require(:user).permit(:name, :ActiveCode,:IsActived, :department, :password,:password_confirmation, :email)
     end
 
-    
+
     def correct_user
    @user = User.find(params[:id])
    redirect_to (root_path) unless current_user?(@user)
    end
-   
+
    def admin_user
    redirect_to (root_path) unless current_user.admin?
    end
+
+
+
 end
