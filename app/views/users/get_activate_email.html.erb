@@ -1,0 +1,6 @@
+<h1>激活账号</h1>
+    <%= form_tag get_activate_email_path do |f|%>
+    <p><label>邮箱：</label></p><%= text_field_tag :email%>
+    <p><%= submit_tag "发送验证码"%></p>
+    <p><%= link_to "还没有账号？快来注册",new_user_path%></p>
+    <% end %>

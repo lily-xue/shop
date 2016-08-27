@@ -1,11 +1,16 @@
 Shop::Application.routes.draw do
 get ":controller/:action/:name/:ActiveCode/:id"
 resources :sessions,only:[:new ,:create,:destroy]
-resources :users 
+resources :users
 resources :applies
-root 'home#index'  
+
+root 'home#index'
 get "home/about"
 get "home/contact"
+
+match '/get_activate_email', to: 'users#get_activate_email',via: 'get'
+match '/get_activate_email', to: 'users#send_activate_email',via: 'post'
+
 match '/signup', to: 'users#new',via: 'get'
 match '/signin', to: 'sessions#new',via: 'get'
 match '/signout', to: 'sessions#destroy',via: 'delete'

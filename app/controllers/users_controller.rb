@@ -30,13 +30,29 @@ class UsersController < ApplicationController
 
   # POST /users
   # POST /users.json
+  def get_activate_email
+
+  end
+
+  def send_activate_email
+    @user = User.find_by(email:params[:email])
+    if @user
+      SignupMailer.sendmail(@user).deliver
+      flash[:notice] = "发送邮件，请查收"
+      redirect_to :action => "new"
+    else
+      flash[:notice] = "用户不存在，请先注册"
+      redirect_to :action => "new"
+    end
+  end
+
   def create
     @user = User.new(user_params)
     @user.ActiveCode = rand(Time.now.to_i).to_s
    @user.IsActived = false
     respond_to do |format|
       if @user.save
-    SignupMailer.sendmail(@user).deliver
+        SignupMailer.sendmail(@user).deliver
         format.html { redirect_to @user, notice: '账号注册成功，请登录邮件激活账号' }
         format.json { render action: 'show', status: :created, location: @user }
       else
