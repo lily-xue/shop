@@ -15,10 +15,12 @@
   <div class="field">
     <%= f.label :加班时间 %><br>
     <%= f.date_select :overtime,:use_month_numbers => true,:default => 1.day.ago %>
+
   </div>
   <div class="field">
     <%= f.label :申请时间 %><br>
     <%= Time.now.strftime("%Y-%m-%d")%>
+
   </div>
   <div class="field">
     <%= f.label :申请人 %><br>
@@ -26,6 +28,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "提交"%>
   </div>
 <% end %>

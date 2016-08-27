@@ -1,5 +1,5 @@
 <% if @current_user %>
-<h1><%= @current_user.name %>，欢迎来到xx领取系统</h1>
+<h1>亲爱的<%= @current_user.name %>，欢迎来到xx领取系统</h1>
 <% if current_user.admin? %>
 <p>
 <%= link_to "1.查看所有用户",users_path %><br>

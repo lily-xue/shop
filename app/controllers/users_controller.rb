@@ -31,18 +31,24 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def get_activate_email
-
   end
 
   def send_activate_email
     @user = User.find_by(email:params[:email])
-    if @user
+    if @user && @user.IsActived == "f"
       SignupMailer.sendmail(@user).deliver
-      flash[:notice] = "发送邮件，请查收"
-      redirect_to :action => "new"
-    else
+      flash[:notice] = "已经发送验证码到您邮箱，请查收"
+      redirect_to root_path
+    elsif @user && @user.IsActived == "t"
+      flash[:notice] = "用户已经激活，请勿重复激活"
+      # redirect_to :action => "new"
+      redirect_to  "/get_activate_email"
+    elsif @user == nil
       flash[:notice] = "用户不存在，请先注册"
       redirect_to :action => "new"
+    else
+      flash[:notice] = "验证码发送失败，请重试"
+        redirect_to  "/get_activate_email"
     end
   end
 
@@ -53,7 +59,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         SignupMailer.sendmail(@user).deliver
-        format.html { redirect_to @user, notice: '账号注册成功，请登录邮件激活账号' }
+        format.html { redirect_to @user, notice: '账号注册成功，已经发送激活码到您邮箱，请登录邮箱激活账号' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
