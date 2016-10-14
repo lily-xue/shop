@@ -113,9 +113,15 @@ flash[:notice] = "账号删除成功"
    redirect_to (root_path) unless current_user?(@user)
    end
 
-   def admin_user
-   redirect_to (root_path) unless current_user.admin?
-   end
+  #  def admin_user
+  #  redirect_to (root_path) unless current_user.admin?
+  #  end
+   def admin_user#如果不是管理员，则跳转到根页面
+      @current_user = User.find_by(id: session[:user_id])
+      redirect_to(root_path) unless @current_user.admin?
+    end
+
+
 
 
 

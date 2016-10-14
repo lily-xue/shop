@@ -48,7 +48,7 @@
         <a class="navbar-brand"<%= link_to "首页",root_path%></a>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", new_user_path  %></li>
+            <li><%= link_to "申请", new_apply_path  %></li>
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
@@ -64,9 +64,9 @@
         </div>
         <div class="col-lg-3">
           <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
+            <h3>账号</h3>
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+              <li class="nav-header">账号</li>
               <li><%= link_to "注册", new_user_path  %></li>
               <li><%= link_to "登录", signin_path  %></li>
               <li><%= link_to "激活", get_activate_email_path %></li>

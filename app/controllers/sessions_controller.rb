@@ -8,7 +8,7 @@ if user && user.authenticate(params[:session][:password]) && user.IsActived == "
 sign_in user
 redirect_to user
 elsif user && user.authenticate(params[:session][:password]) && user.IsActived == "f"
-  flash.now[:error] = "用户is not Active"
+  flash.now[:error] = "用户未激活"
   render 'new'
 else
 flash.now[:error] = "用户名或者密码错误"

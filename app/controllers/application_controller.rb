@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
    elsif user != nil and user.IsActived == "t" then
      flash[:notice] = "你已经激活过了~"
    else
-     flash[:notice] = "激活失败"
+     flash[:error] = "激活失败"
    end
  end
 end

@@ -1,22 +1,30 @@
-<h1>所有申请</h1>
-<table>
+<h1>申请记录</h1>
+<table class="table table-hover table-bordered table-condensed">
   <thead>
     <tr>
       <th>状态</th>
       <th>加班时间</th>
       <th>申请时间</th>
       <th>申请人</th>
-      <th>管理员备注</th>
+      <th>券号</th>
       <th></th>
     </tr>
   <tbody>
-    <% @current_user.applies.each do |apply| %>
+    <% @applies.each do |apply| %>
       <tr>
-        <td><%= apply.status %></td>
+        <td>
+          <% if apply.status == "已申请" && @current_user.admin? %>
+          <%= link_to "同意",apply_path(apply.id, apply: {status: "已同意"}),method: :patch, class: "text-info" %>
+          <%= link_to "拒绝",apply_path(apply.id, apply: {status: "已拒绝"}),method: :patch, class: "text-info"%>
+          <% else %>
+          <%= apply.status %>
+          <% end %>
+        </td>
         <td><%= apply.overtime.strftime("%Y-%m-%d") %></td>
         <td><%= apply.created_at.strftime("%Y-%m-%d") %></td>
         <td><%= apply.user.name %></td>
         <td><%= apply.tips %></td>
+
       </tr>
     <% end %>
   </tbody>
